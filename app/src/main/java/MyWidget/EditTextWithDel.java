@@ -7,76 +7,84 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.view.View;
 import android.widget.EditText;
 
 import com.example.shen.linearassist.R;
 
-public class EditTextWithDel extends android.support.v7.widget.AppCompatEditText {
+public class EditTextWithDel extends android.support.v7.widget.AppCompatEditText implements View.OnFocusChangeListener, TextWatcher {
 
-    private static final String TAG = "EditTextWithDel";
-    private Drawable imgInable;
-    private Drawable imgAble;
-    private Context mContext;
+    private Drawable mClearDrawable;
+
+    private boolean hasFocus;
 
     public EditTextWithDel(Context context) {
-        super(context);
-        mContext = context;
-        init();
+        this(context, null);
     }
 
     public EditTextWithDel(Context context, AttributeSet attributeSet) {
-        super(context, attributeSet);
-        mContext = context;
-        init();
+        this(context, attributeSet, android.R.attr.editTextStyle);
     }
 
     public EditTextWithDel(Context context, AttributeSet attributeSet, int defStyleAttribute) {
         super(context, attributeSet, defStyleAttribute);
-        mContext = context;
         init();
     }
 
     private void init() {
-        imgInable = mContext.getResources().getDrawable(R.drawable.text_delete_24);
-        addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                setDrawable();
-            }
-        });
-        setDrawable();
-    }
-
-    private void setDrawable() {
-        if (length() < 1) {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-        } else {
-            setCompoundDrawablesWithIntrinsicBounds(null, null, imgInable, null);
+        mClearDrawable = getCompoundDrawables()[2];
+        if (mClearDrawable == null) {
+            mClearDrawable = getResources().getDrawable(R.drawable.text_delete_24);
         }
+        mClearDrawable.setBounds(0, 0, mClearDrawable.getIntrinsicWidth(), mClearDrawable.getIntrinsicHeight());
+        setClearIconVisible(false);
+        setOnFocusChangeListener(this);
+        addTextChangedListener(this);
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        if (imgInable != null && event.getAction() == MotionEvent.ACTION_UP) {
-            int eventX = (int) event.getX();
-            int eventY = (int) event.getY();
-            Rect rect = new Rect();
-            getGlobalVisibleRect(rect);
-            if (rect.contains(eventX, eventY)) {
-                this.setText("");
+        if (event.getAction() == MotionEvent.ACTION_UP) {
+            if (getCompoundDrawables()[2] != null) {
+                boolean touchable = (event.getX() > (getWidth() - getTotalPaddingRight())) && (event.getX() < ((getWidth() - getPaddingRight())));
+                if (touchable) {
+                    this.setText("");
+                }
             }
         }
         return super.onTouchEvent(event);
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        this.hasFocus = hasFocus;
+        if (hasFocus) {
+            setClearIconVisible(getText().length() > 0);
+        } else {
+            setClearIconVisible(false);
+        }
+    }
+
+    protected void setClearIconVisible(boolean visible) {
+        Drawable right = visible ? mClearDrawable : null;
+        setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], right, getCompoundDrawables()[3]);
+    }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int count, int after) {
+        if (hasFocus) {
+            setClearIconVisible(s.length() > 0);
+        }
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
     }
 
     @Override
