@@ -28,9 +28,21 @@
         android:layout_below="@+id/matrix_context"
         android:layout_marginTop="50dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="60dp"
         android:text="上三角变换"
         android:textSize="24dp"
         />
+
+    <Button
+        android:id="@+id/lower_triangle_transition_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/matrix_context"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="60dp"
+        android:text="下三角变换"
+        android:textSize="24dp"/>
 
 </RelativeLayout>

@@ -46,8 +46,16 @@ public class DeterminantHome extends AppCompatActivity {
             if (!isNumerical(determinantText)) { // 非纯数字异常
                 throw new NonNumericalException();
             }
+            while (determinantText.charAt(0) == '\n') {
+                determinantText = determinantText.substring(1);
+            }
             String[] temp1 = determinantText.split("\\n+"); // 行列式文本按行截取
             int order = temp1.length;
+            for (int i = 0; i < order; i++) {
+                while (temp1[i].charAt(0) == ' ') {
+                    temp1[i] = temp1[i].substring(1);
+                }
+            }
             for (int i = 0; i < order; i++) {
                 if (temp1[i].split("\\s+").length != order) {
                     throw new NonSquareMatrixException("第" + i + "行的列数与行数不符");
@@ -70,20 +78,24 @@ public class DeterminantHome extends AppCompatActivity {
             /* 行初等变换 */
             while (pOrder < order - 1) {
                 /* minRow为除去已经变换后的行之外， 从左到右首个非零元最小的行索引*/
+                minRow = pOrder;
                 double tempMin = determinant[pOrder][pOrder];
-                for (int i = pOrder; i < order - 1; i++) {
-                    for (int j = i + 1; j < order; j++) {
-                        if (determinant[j][pOrder] < tempMin && determinant[j][pOrder] != 0){
-                            tempMin = determinant[j][pOrder];
-                            minRow = j;
-                        }
+                for (int i = pOrder + 1; i < order; i++) {
+                    if (determinant[i][pOrder] < tempMin && determinant[i][pOrder] != 0) {
+                        tempMin = determinant[i][pOrder];
+                        minRow = i;
                     }
                 }
+                if (determinant[minRow][pOrder] == 0) {
+                    break;
+                }
                 /* minRow行由于有最小的首个非零元，将其换到剩余行的顶部有利于行变换时减少小数出现 */
-                double[] tempRow = determinant[minRow];
-                determinant[minRow] = determinant[pOrder];
-                determinant[pOrder] = tempRow;
-                resultD = - resultD; // 第一类行变换变号
+                if (minRow != pOrder) {
+                    double[] tempRow = determinant[minRow];
+                    determinant[minRow] = determinant[pOrder];
+                    determinant[pOrder] = tempRow;
+                    resultD = -resultD; // 第一类行变换变号
+                }
                 for (int i = pOrder + 1; i < order; i++) {
                     double div = bigDecimalDiv(determinant[i][pOrder], determinant[pOrder][pOrder]); // 对下列行实施第三类行变换的乘数因子
                     for (int j = pOrder; j < order; j++) { // 对下面的行实施第三类行变换，以求上三角阵
