@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".DeterminantHome" />
-        <activity android:name=".RowTransitionHome"></activity>
+        <activity android:name=".RowTransitionHome" />
+        <activity android:name=".InverseMatrixHome"></activity>
     </application>
 
 </manifest>

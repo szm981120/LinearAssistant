@@ -46,6 +46,9 @@ public class DeterminantHome extends AppCompatActivity {
             if (!isNumerical(determinantText)) { // 非纯数字异常
                 throw new NonNumericalException();
             }
+            if(determinantText.isEmpty()){
+                throw new NonSquareMatrixException("矩阵不能为空");
+            }
             while (determinantText.charAt(0) == '\n') {
                 determinantText = determinantText.substring(1);
             }
