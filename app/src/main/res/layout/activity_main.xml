@@ -10,10 +10,8 @@
         android:id="@+id/determinant_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
         android:text="行列式"
         android:textSize="20dp"/>
 
@@ -22,7 +20,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:layout_alignTop="@+id/determinant_button"
+        android:layout_below="@+id/determinant_button"
+        android:layout_marginTop="25dp"
         android:text="行初等变换"
         android:textSize="20dp"/>
 
@@ -30,11 +29,20 @@
         android:id="@+id/inverse_matrix_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginRight="40dp"
-        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/row_transition_button"
+        android:layout_marginTop="25dp"
         android:text="矩阵求逆"
+        android:textSize="20dp"/>
+
+    <Button
+        android:id="@+id/calculation_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/inverse_matrix_button"
+        android:layout_marginTop="25dp"
+        android:text="矩阵计算"
         android:textSize="20dp"/>
 
 

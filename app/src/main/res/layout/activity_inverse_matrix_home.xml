@@ -29,6 +29,9 @@
         android:layout_marginTop="50dp"
         android:text="求逆"
         android:textSize="26dp"
+        android:autoSizeMaxTextSize="26dp"
+        android:autoSizeMinTextSize="12dp"
+        android:maxLines="1"
         />
 
 </RelativeLayout>

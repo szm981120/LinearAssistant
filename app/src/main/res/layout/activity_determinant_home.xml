@@ -5,42 +5,46 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".DeterminantHome">
-    
-    <MyWidget.EditTextWithDel
-        android:id="@+id/determinant_content"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_above="@+id/determinant_result"
-        android:layout_marginBottom="30dp"
-        android:hint="请在此输入行列式"
-        android:selectAllOnFocus="true"
-        android:focusedByDefault="true"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        android:textSize="20dp"
-        />
+    tools:context=".DeterminantHome"
+    >
 
-    <TextView
-        android:id="@+id/determinant_result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="30dp"
-        android:textSize="24dp"
-        android:singleLine="false"
-        />
+  <MyWidget.EditTextWithDel
+      android:id="@+id/determinant_content"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_above="@+id/determinant_result"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="30dp"
+      android:focusedByDefault="true"
+      android:hint="请在此输入行列式"
+      android:inputType="textMultiLine"
+      android:selectAllOnFocus="true"
+      android:singleLine="false"
+      android:textSize="20dp"
+      />
 
-    <Button
-        android:id="@+id/calculate_determinant_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/determinant_result"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="计算"
-        android:textSize="24dp"
-        />
+  <TextView
+      android:id="@+id/determinant_result"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:layout_marginTop="30dp"
+      android:singleLine="false"
+      android:textSize="24dp"
+      />
+
+  <Button
+      android:id="@+id/calculate_determinant_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/determinant_result"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="50dp"
+      android:autoSizeMaxTextSize="24dp"
+      android:autoSizeMinTextSize="12dp"
+      android:maxLines="1"
+      android:text="计算"
+      android:textSize="24dp"
+      />
 
 </RelativeLayout>

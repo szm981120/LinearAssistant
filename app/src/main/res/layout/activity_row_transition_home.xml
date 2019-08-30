@@ -4,45 +4,53 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".RowTransitionHome">
+    tools:context=".RowTransitionHome"
+    >
 
-    <MyWidget.EditTextWithDel
-        android:id="@+id/matrix_context"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_marginHorizontal="50dp"
-        android:hint="请在此输入矩阵"
-        android:selectAllOnFocus="true"
-        android:focusedByDefault="true"
-        android:inputType="textMultiLine"
-        android:singleLine="false"
-        android:textSize="20dp"
-        />
+  <MyWidget.EditTextWithDel
+      android:id="@+id/matrix_context"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:layout_marginHorizontal="50dp"
+      android:focusedByDefault="true"
+      android:hint="请在此输入矩阵"
+      android:inputType="textMultiLine"
+      android:selectAllOnFocus="true"
+      android:singleLine="false"
+      android:textSize="20dp"
+      />
 
-    <Button
-        android:id="@+id/upper_triangle_transition_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/matrix_context"
-        android:layout_marginTop="50dp"
-        android:layout_alignParentLeft="true"
-        android:layout_marginLeft="60dp"
-        android:text="上三角变换"
-        android:textSize="24dp"
-        />
+  <Button
+      android:id="@+id/upper_triangle_transition_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentLeft="true"
+      android:layout_below="@+id/matrix_context"
+      android:layout_centerHorizontal="true"
+      android:layout_marginLeft="60dp"
+      android:layout_marginTop="50dp"
+      android:text="上三角变换"
+      android:textSize="24dp"
+      android:autoSizeMaxTextSize="24dp"
+      android:autoSizeMinTextSize="12dp"
+      android:maxLines="1"
+      />
 
-    <Button
-        android:id="@+id/lower_triangle_transition_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_below="@+id/matrix_context"
-        android:layout_marginTop="50dp"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="60dp"
-        android:text="下三角变换"
-        android:textSize="24dp"/>
+  <Button
+      android:id="@+id/lower_triangle_transition_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentRight="true"
+      android:layout_below="@+id/matrix_context"
+      android:layout_centerHorizontal="true"
+      android:layout_marginRight="60dp"
+      android:layout_marginTop="50dp"
+      android:text="下三角变换"
+      android:textSize="24dp"
+      android:autoSizeMaxTextSize="24dp"
+      android:autoSizeMinTextSize="12dp"
+      android:maxLines="1"
+      />
 
 </RelativeLayout>
