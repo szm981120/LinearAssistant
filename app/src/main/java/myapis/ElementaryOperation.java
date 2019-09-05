@@ -2,6 +2,8 @@ package myapis;
 
 import Exceptions.NonNumericalException;
 import Exceptions.NonSquareMatrixException;
+import Exceptions.NoninvertibleException;
+import com.example.shen.linearassist.DeterminantHome;
 
 public class ElementaryOperation {
   private static NumericalCalculation numCal = new NumericalCalculation();
@@ -48,7 +50,7 @@ public class ElementaryOperation {
   }
 
   public double[][] inverse(double[][] m, int accuracy)
-      throws NonNumericalException, NonSquareMatrixException {
+      throws NonNumericalException, NonSquareMatrixException, NoninvertibleException {
     int rowN = m.length;
     int columnN = rowN > 0 ? m[0].length : 0;
     int columnN2 = columnN * 2;
@@ -113,6 +115,10 @@ public class ElementaryOperation {
       for (int j = 0; j < columnN; j++) {
         inverse[i][j] = matrix[i][j + columnN];
       }
+    }
+    DeterminantHome dt = new DeterminantHome();
+    if (Math.abs(dt.getDeterminant(MatrixStringToDouble.matrixDoubleToString(inverse))) < 0.001) {
+      throw new NoninvertibleException("该矩阵不可逆");
     }
     return inverse;
   }

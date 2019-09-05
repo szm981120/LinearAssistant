@@ -2,6 +2,7 @@ package com.example.shen.linearassist;
 
 import Exceptions.NonNumericalException;
 import Exceptions.NonSquareMatrixException;
+import Exceptions.NoninvertibleException;
 import MyWidget.EditTextWithDel;
 import android.content.ClipData;
 import android.content.ClipboardManager;
@@ -143,7 +144,11 @@ public class MatrixCalculationHome extends AppCompatActivity {
               }
               break;
             case 6:
-              dataList.add(elementaryOperation.inverse(matrix, ACCURACY));
+              try {
+                dataList.add(elementaryOperation.inverse(matrix, ACCURACY));
+              } catch (NoninvertibleException e) {
+                e.printStackTrace();
+              }
               break;
           }
           rg_operator.clearCheck();

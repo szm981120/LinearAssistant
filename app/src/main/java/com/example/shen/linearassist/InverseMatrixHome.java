@@ -1,5 +1,6 @@
 package com.example.shen.linearassist;
 
+import Exceptions.NoninvertibleException;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
@@ -40,7 +41,7 @@ public class InverseMatrixHome extends AppCompatActivity {
     });
   }
 
-  private void inverse() {
+  public void inverse() {
     String result = "";
     ElementaryOperation eleOp = new ElementaryOperation();
     try {
@@ -52,36 +53,11 @@ public class InverseMatrixHome extends AppCompatActivity {
       if (oldMatrix.length != oldMatrix[0].length) {
         throw new NonSquareMatrixException("非方阵认为不可逆");
       }
-      int rowN = oldMatrix.length;
-      int columnN = rowN > 0 ? oldMatrix[0].length : 0;
       double[][] matrix = eleOp.inverse(oldMatrix, ACCURACY);
       result = MatrixStringToDouble.matrixDoubleToString(matrix);
-      String[] temp3 = result.split("\\n+");
-      int rowN_ = temp3.length;
-      int columnN_ = 0;
-      if (rowN_ > 0) {
-        columnN_ = temp3[0].split("\\s+").length;
-      }
-      String[][] temp4 = new String[rowN_][columnN_]; // 行列式二维文本数组
-      for (int i = 0; i < rowN_; i++) {
-        temp4[i] = temp3[i].split("\\s+");
-      }
-      for (int i = 0; i < rowN_; i++) { // 获取行列式二维数值数组
-        boolean noInverse = true;
-        for (int j = 0; j < columnN_; j++) {
-          Log.d("ij", result);
-          if (Math.abs(Double.parseDouble(temp4[i][j])) > 1e-4) {
-            noInverse = false;
-          }
-        }
-        if (noInverse) {
-          result = "该矩阵不可逆";
-          break;
-        }
-      }
     } catch (NonNumericalException e) {
       result = "行列式必须是纯数字！";
-    } catch (NonSquareMatrixException e) {
+    } catch (NonSquareMatrixException | NoninvertibleException e) {
       result = e.getMessage();
     } finally {
       final AlertDialog.Builder normalDialog = new AlertDialog.Builder(InverseMatrixHome.this);

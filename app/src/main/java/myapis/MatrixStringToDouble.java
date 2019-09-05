@@ -60,7 +60,9 @@ public class MatrixStringToDouble {
           result += " ";
         }
       }
-      result += "\n";
+      if (i != rowN - 1) {
+        result += "\n";
+      }
     }
     return result;
   }

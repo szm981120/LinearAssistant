@@ -52,7 +52,7 @@ public class RowTransitionHome extends AppCompatActivity {
         });
     }
 
-    private void rowTransition(boolean isUpper) {
+    public void rowTransition(boolean isUpper) {
         String result = "";
         try {
             String matrixContent = matrix_content.getText().toString(); // 获取行列式信息
