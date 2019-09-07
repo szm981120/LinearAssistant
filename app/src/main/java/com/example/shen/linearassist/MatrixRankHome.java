@@ -16,6 +16,7 @@ public class MatrixRankHome extends AppCompatActivity {
 
   EditTextWithDel matrix_content;
   TextView rank_result_txt;
+  TextView vector_group_correlation_result_txt;
   Button matrix_rank_btn;
 
   @Override
@@ -24,6 +25,8 @@ public class MatrixRankHome extends AppCompatActivity {
     setContentView(R.layout.activity_matrix_rank_home);
     matrix_content = (EditTextWithDel) findViewById(R.id.matrix_content);
     rank_result_txt = (TextView) findViewById(R.id.rank_result_txt);
+    vector_group_correlation_result_txt =
+        (TextView) findViewById(R.id.vector_group_correlation_result_txt);
     matrix_rank_btn = (Button) findViewById(R.id.matrix_rank_btn);
     matrix_rank_btn.setOnClickListener(new View.OnClickListener() {
       @Override public void onClick(View v) {
@@ -31,6 +34,11 @@ public class MatrixRankHome extends AppCompatActivity {
         try {
           int rank = getRank(matrixContent);
           rank_result_txt.setText(String.valueOf(rank));
+          if (rank < MatrixStringToDouble.matrixStringToDouble(matrixContent)[0].length) {
+            vector_group_correlation_result_txt.setText("列向量组线性相关");
+          } else {
+            vector_group_correlation_result_txt.setText("列向量组线性无关");
+          }
         } catch (NonNumericalException e) {
           rank_result_txt.setText("矩阵必须为纯数字！");
         } catch (NonSquareMatrixException e) {
