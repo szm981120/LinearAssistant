@@ -45,5 +45,15 @@
         android:text="矩阵计算"
         android:textSize="20dp"/>
 
+    <Button
+        android:id="@+id/rank_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/calculation_button"
+        android:layout_marginTop="25dp"
+        android:text="矩阵求秩"
+        android:textSize="20dp"/>
+
 
 </RelativeLayout>

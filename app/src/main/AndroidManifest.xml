@@ -21,6 +21,8 @@
     <activity android:name=".InverseMatrixHome"/>
     <activity android:name=".MatrixCalculationHome">
     </activity>
+    <activity android:name=".MatrixRankHome">
+    </activity>
   </application>
 
 </manifest>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MatrixRankHome"
+    >
+
+  <MyWidget.EditTextWithDel
+      android:id="@+id/matrix_content"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_above="@+id/rank_result_txt"
+      android:layout_centerHorizontal="true"
+      android:layout_marginBottom="30dp"
+      android:focusedByDefault="true"
+      android:hint="请在此输入矩阵"
+      android:inputType="textMultiLine"
+      android:singleLine="false"
+      android:textSize="20dp"
+      />
+
+  <TextView
+      android:id="@+id/rank_result_txt"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_centerInParent="true"
+      android:layout_marginTop="30dp"
+      android:singleLine="false"
+      android:textSize="24dp"
+      />
+
+  <Button
+      android:id="@+id/matrix_rank_btn"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/rank_result_txt"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="50dp"
+      android:autoSizeMaxTextSize="24dp"
+      android:autoSizeMinTextSize="12dp"
+      android:maxLines="1"
+      android:text="求秩"
+      android:textSize="24dp"
+      />
+
+</RelativeLayout>

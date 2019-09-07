@@ -51,8 +51,8 @@ public class RowTransition {
         iOrder++;
         jOrder++;
       }
-      double div = matrix[iOrder][jOrder];
-      if (Math.abs(matrix[iOrder][jOrder]) > 0.001) {
+      double div = jOrder == columnN ? matrix[iOrder][columnN - 1] : matrix[iOrder][jOrder];
+      if (Math.abs(div) > 0.001) {
         for (int j = jOrder; j < columnN; j++) {
           matrix[iOrder][j] =
               numCal.bigDecimalDiv(matrix[iOrder][j], div, ACCURACY);
@@ -93,8 +93,8 @@ public class RowTransition {
         iOrder--;
         jOrder--;
       }
-      double div = matrix[iOrder][jOrder];
-      if (Math.abs(matrix[iOrder][jOrder]) > 0.001) {
+      double div = jOrder == -1 ? matrix[iOrder][0] : matrix[iOrder][jOrder];
+      if (Math.abs(div) > 0.001) {
         for (int j = columnN - 1; j >= 0; j--) {
           matrix[iOrder][j] =
               numCal.bigDecimalDiv(matrix[iOrder][j], div, ACCURACY);

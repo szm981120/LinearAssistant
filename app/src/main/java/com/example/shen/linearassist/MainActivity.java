@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import myapis.MatrixStringToDouble;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   Button row_transition_button;
   Button inverse_matrix_button;
   Button calculation_button;
+  Button rank_btn;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     inverse_matrix_button.setOnClickListener(this);
     calculation_button = (Button) findViewById(R.id.calculation_button);
     calculation_button.setOnClickListener(this);
+    rank_btn = (Button) findViewById(R.id.rank_btn);
+    rank_btn.setOnClickListener(this);
   }
 
   @Override
@@ -46,6 +50,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       case R.id.calculation_button:
         Intent intent3 = new Intent(MainActivity.this, MatrixCalculationHome.class);
         startActivity(intent3);
+        break;
+      case R.id.rank_btn:
+        Intent intent4 = new Intent(MainActivity.this, MatrixRankHome.class);
+        startActivity(intent4);
         break;
       default:
         break;
