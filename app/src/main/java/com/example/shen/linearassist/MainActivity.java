@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
   Button inverse_matrix_button;
   Button calculation_button;
   Button rank_btn;
+  Button eigenvalues_btn;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     calculation_button.setOnClickListener(this);
     rank_btn = (Button) findViewById(R.id.rank_btn);
     rank_btn.setOnClickListener(this);
+    eigenvalues_btn = (Button) findViewById(R.id.eigenvalues_btn);
+    eigenvalues_btn.setOnClickListener(this);
   }
 
   @Override
@@ -54,6 +57,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
       case R.id.rank_btn:
         Intent intent4 = new Intent(MainActivity.this, MatrixRankHome.class);
         startActivity(intent4);
+        break;
+      case R.id.eigenvalues_btn:
+        Intent intent5 = new Intent(MainActivity.this, EigenvaluesHome.class);
+        startActivity(intent5);
         break;
       default:
         break;

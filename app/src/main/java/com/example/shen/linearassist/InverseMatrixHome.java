@@ -56,7 +56,7 @@ public class InverseMatrixHome extends AppCompatActivity {
       double[][] matrix = eleOp.inverse(oldMatrix, ACCURACY);
       result = MatrixStringToDouble.matrixDoubleToString(matrix);
     } catch (NonNumericalException e) {
-      result = "行列式必须是纯数字！";
+      result = e.getMessage();
     } catch (NonSquareMatrixException | NoninvertibleException e) {
       result = e.getMessage();
     } finally {

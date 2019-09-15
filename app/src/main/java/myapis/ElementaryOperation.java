@@ -122,4 +122,19 @@ public class ElementaryOperation {
     }
     return inverse;
   }
+
+  public double[][] transpose(double[][] matrix) throws NonSquareMatrixException {
+    int rowN = matrix.length;
+    if (rowN == 0) {
+      throw new NonSquareMatrixException("矩阵不能为空");
+    }
+    int columnN = matrix[0].length;
+    double[][] matrixT = new double[rowN][columnN];
+    for (int i = 0; i < rowN; i++) {
+      for (int j = 0; j < columnN; j++) {
+        matrixT[i][j] = matrix[j][i];
+      }
+    }
+    return matrixT;
+  }
 }

@@ -62,5 +62,16 @@
       android:textSize="20dp"
       />
 
+  <Button
+      android:id="@+id/eigenvalues_btn"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_below="@+id/rank_btn"
+      android:layout_centerHorizontal="true"
+      android:layout_marginTop="25dp"
+      android:singleLine="false"
+      android:text="求非奇异阵的实特征值"
+      android:textSize="20dp"
+      />
 
 </RelativeLayout>

@@ -9,10 +9,10 @@ public class MatrixStringToDouble {
       throws NonNumericalException, NonSquareMatrixException {
     NumericalCalculation numCal = new NumericalCalculation();
     if (!numCal.isNumerical(matrixString)) { // 非纯数字异常
-      throw new NonNumericalException();
+      throw new NonNumericalException("矩阵内容含有非法字符！");
     }
     if (matrixString.isEmpty()) {
-      throw new NonSquareMatrixException("矩阵不能为空");
+      throw new NonSquareMatrixException("矩阵不能为空！");
     }
     while (matrixString.charAt(0) == '\n') {
       matrixString = matrixString.substring(1);
@@ -26,7 +26,7 @@ public class MatrixStringToDouble {
     }
     for (int i = 0; i < rowN - 1; i++) {
       if (temp1[i].split("\\s+").length != temp1[i + 1].split("\\s+").length) {
-        throw new NonSquareMatrixException("第" + i + "行的列数与其他行行数不符");
+        throw new NonSquareMatrixException("第" + i + "行的列数与其他行行数不符！");
       }
     }
     int columnN = 0;

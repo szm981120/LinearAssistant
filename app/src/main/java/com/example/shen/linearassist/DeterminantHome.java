@@ -43,9 +43,9 @@ public class DeterminantHome extends AppCompatActivity {
         double resultD = getDeterminant(determinantText);
         determinant_result.setText(new DecimalFormat("#.0000").format(resultD));
       } catch (NonNumericalException e) {
-        determinant_result.setText("行列式必须是纯数字！");
+        determinant_result.setText(e.getMessage());
       } catch (NonSquareMatrixException e) {
-        determinant_result.setText("行列式必须是方阵！" + "\n" + e.getMessage());
+        determinant_result.setText(e.getMessage());
       }
     }
   });
@@ -54,7 +54,7 @@ public class DeterminantHome extends AppCompatActivity {
   public double getDeterminant(String determinantText)
       throws NonNumericalException, NonSquareMatrixException {
     if (!numCal.isNumerical(determinantText)) { // 非纯数字异常
-      throw new NonNumericalException();
+      throw new NonNumericalException("行列式中存在非法字符！");
     }
     if (determinantText.isEmpty()) {
       throw new NonSquareMatrixException("矩阵不能为空");
