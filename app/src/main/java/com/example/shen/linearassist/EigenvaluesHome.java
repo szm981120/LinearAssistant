@@ -157,7 +157,7 @@ public class EigenvaluesHome extends AppCompatActivity {
               ACCURACY);
         }
       }
-      double[][] T = genUnitMatrix(nn + 1);
+      double[][] T = genUnitMatrix(n);
       for (int i = 0; i < nn; i++) {
         for (int j = 0; j < nn; j++) {
           T[i + k][j + k] = R[i][j];

@@ -41,10 +41,12 @@ Thank you!
 
 [2019年9月7日22点06分] 在矩阵求秩功能中加入了列向量组线性相关性判断。
 
-[2019年9月8日16点46分] 在Eclipse上实现了矩阵特征值求解功能，初步测试正确。使用了http://www.mayiwenku.com/p-7132476.html中提到的代码。其他参考文献有https://www.docin.com/p-902393408.html，http://www.doc88.com/p-5955999603736.html
+[2019年9月8日16点46分] 在Eclipse上实现了矩阵特征值求解功能，初步测试正确。使用了http://www.mayiwenku.com/p-7132476.html中提到的代码。其他参考文献有https://www.docin.com/p-902393408.html，http://www.doc88.com/p-5955999603736.html，https://hujiaweibujidao.github.io/files/nm-chapter3.pdf
 
 [2019年9月15日15点11分] 在ElementaryOperation中加入了矩阵求转置的api。
 
 [2019年9月15日15点58分] 基本实现了非奇异阵求实特征值功能及测试。
 
 [2019年9月15日16点18分] 发现了在求某些矩阵的特征值有复数情况时，报出了索引越界的bug。
+
+[2019年9月23日16点43分] 修复了求某些矩阵特征值有复数情况时，报出索引越界的bug。
